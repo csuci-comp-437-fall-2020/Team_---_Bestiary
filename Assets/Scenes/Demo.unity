@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2a00dc492ad2e4d9b221025d005fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: 60
 --- !u!4 &298380910
 Transform:
   m_ObjectHideFlags: 0
@@ -281,10 +282,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 350
-  jumpHeight: 9
-  slidingGravity: -25
+  jumpHeight: 9.5
+  dashSpeed: 10
+  slidingGravityScale: 1.25
   baseGravity: -25
+  gameManager: {fileID: 298380909}
   extraJumps: 3
+  extraDashes: 2
+  slamPower: 1
+  slamSpeed: -18
+  wallClingTime: 2.5
+  floatSpeed: -0.5
+  floatDuration: 1
 --- !u!212 &652493861
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -359,7 +368,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -518,7 +527,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 2.58, y: 2.56}
   m_EdgeRadius: 0
 --- !u!1 &965386074
 GameObject:
@@ -1098,7 +1107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 2.58, y: 2.56}
   m_EdgeRadius: 0
 --- !u!1 &1526288376
 GameObject:

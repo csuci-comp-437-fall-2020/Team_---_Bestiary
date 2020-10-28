@@ -5,25 +5,26 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int target = 60;
 
     void Awake()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = target;
 #if UNITY_EDITOR
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = target;
 #endif
     }
-
-    // Update is called once per frame
+      
     void Update()
     {
-        
+        if(Application.targetFrameRate != target)
+            Application.targetFrameRate = target;
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
