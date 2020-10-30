@@ -524,6 +524,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9127921535667080714, guid: 438625ce3b9f05343a17b343f52e336d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127921535667080714, guid: 438625ce3b9f05343a17b343f52e336d,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127921535667080714, guid: 438625ce3b9f05343a17b343f52e336d,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9127921535667080715, guid: 438625ce3b9f05343a17b343f52e336d,
         type: 3}
       propertyPath: m_GravityScale
@@ -543,6 +558,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: character
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127921535667080724, guid: 438625ce3b9f05343a17b343f52e336d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 438625ce3b9f05343a17b343f52e336d, type: 3}
@@ -585,6 +605,8 @@ MonoBehaviour:
   slidingGravityScale: 1.25
   baseGravity: -25
   gameManager: {fileID: 298380909}
+  spawnerPrefab: {fileID: 4636618108350314598, guid: 3201f939771d22e489c8aa18d48f3079,
+    type: 3}
   extraJumps: 3
   extraDashes: 2
   slamPower: 1

@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public float slidingGravityScale;
     [SerializeField] private float baseGravity;
     [SerializeField] private GameManager gameManager;
+    // Delet This
+    private GameObject spawner;
+    [SerializeField] private GameObject spawnerPrefab;
 
     private Rigidbody2D _body;
     private SpriteRenderer _sprite;
@@ -58,6 +61,8 @@ public class PlayerMovement : MonoBehaviour
         Controls.Gameplay.Move.performed += ctx => _lsMove = ctx.ReadValue<Vector2>();
         Controls.Gameplay.Move.canceled += ctx => _lsMove = Vector2.zero;
         Controls.Gameplay.Select.performed += ctx => gameManager.ExitGame();
+        // Delet This
+        Controls.Gameplay.Start.performed += ctx => Spawn();
         Controls.Gameplay.Down.performed += ctx => CycleSlam();
     }
 
@@ -138,6 +143,18 @@ public class PlayerMovement : MonoBehaviour
                 Physics2D.gravity = new Vector3(0f, baseGravity, 0f);
                 break;
         }
+    }
+    
+    // Delet this
+    void Spawn()
+    {
+        if (spawner == null)
+        {
+            spawner = Instantiate(spawnerPrefab);
+            spawner.transform.position = new Vector3(-6, 2.5f, 0);
+        }
+        else
+            spawner.SetActive(true);
     }
 
     void Jump()
