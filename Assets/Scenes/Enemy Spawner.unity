@@ -384,10 +384,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4810990262216216054, guid: 906d90e3c24652241bec2af6c5866b9b,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 65c5e50539e777d4fbaa2cd3f02a718b, type: 2}
     - target: {fileID: 8955132988189603716, guid: 906d90e3c24652241bec2af6c5866b9b,
         type: 3}
       propertyPath: m_Name
       value: Wall East
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955132988189603716, guid: 906d90e3c24652241bec2af6c5866b9b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906d90e3c24652241bec2af6c5866b9b, type: 3}
@@ -487,10 +497,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1218729198625225228, guid: 22b02255a98a24747b237200b8639989,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 65c5e50539e777d4fbaa2cd3f02a718b, type: 2}
     - target: {fileID: 3344731522461417598, guid: 22b02255a98a24747b237200b8639989,
         type: 3}
       propertyPath: m_Name
       value: Ceiling
+      objectReference: {fileID: 0}
+    - target: {fileID: 3344731522461417598, guid: 22b02255a98a24747b237200b8639989,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6873107241680278249, guid: 22b02255a98a24747b237200b8639989,
         type: 3}
@@ -625,9 +645,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1218729198625225228, guid: 22b02255a98a24747b237200b8639989,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 5f0b4720ed75278458d1aff08b941561, type: 2}
     - target: {fileID: 3344731522461417598, guid: 22b02255a98a24747b237200b8639989,
         type: 3}
       propertyPath: m_Name
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3344731522461417598, guid: 22b02255a98a24747b237200b8639989,
+        type: 3}
+      propertyPath: m_TagString
       value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 6873107241680278249, guid: 22b02255a98a24747b237200b8639989,
@@ -749,10 +779,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4810990262216216054, guid: 906d90e3c24652241bec2af6c5866b9b,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 65c5e50539e777d4fbaa2cd3f02a718b, type: 2}
     - target: {fileID: 8955132988189603716, guid: 906d90e3c24652241bec2af6c5866b9b,
         type: 3}
       propertyPath: m_Name
       value: Wall West
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955132988189603716, guid: 906d90e3c24652241bec2af6c5866b9b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906d90e3c24652241bec2af6c5866b9b, type: 3}
@@ -912,11 +952,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: block
       objectReference: {fileID: 0}
+    - target: {fileID: 5201427007446997549, guid: 8b8c411040c4f944dba03b890b209c4e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     - target: {fileID: 7148780449705655944, guid: 8b8c411040c4f944dba03b890b209c4e,
         type: 3}
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8551274014716125279, guid: 8b8c411040c4f944dba03b890b209c4e,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 5f0b4720ed75278458d1aff08b941561, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b8c411040c4f944dba03b890b209c4e, type: 3}
 --- !u!1001 &9127921534489109627
