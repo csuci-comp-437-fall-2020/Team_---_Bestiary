@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public PlayerControls Controls;
     public float moveSpeed;
     public float jumpHeight;
+    public float wallKickMultiplier;
     public float dashSpeed;
     public float slidingGravityScale;
     [SerializeField] private float baseGravity;
     [SerializeField] private GameManager gameManager;
 
+    
     private Rigidbody2D _body;
     private SpriteRenderer _sprite;
     private CircleCollider2D _hurtBox;
     private Vector3 _slideJump;
 
+    private PlayerControls _controls;
     private Vector2 _lsMove;
     private State _currentState = State.Air;
     private int _jumpsLeft;
@@ -23,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private float _floatTimeLeft;
     
 
+    public Vector2 rsMove;
+    
     public int extraJumps;
     public int extraDashes;
     public int slamPower;
@@ -44,31 +49,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        Controls = new PlayerControls();
+        _controls = new PlayerControls();
 
-        Controls.Gameplay.A.performed += ctx => Jump();
-        Controls.Gameplay.RS.performed += ctx => Jump();
-        Controls.Gameplay.LB.performed += ctx => LeftDash();
-        Controls.Gameplay.RB.performed += ctx => RightDash();
-        Controls.Gameplay.LS.performed += ctx => Slam();
-        Controls.Gameplay.LT.performed += ctx => StartHover();
-        Controls.Gameplay.LT.canceled += ctx => StopHover();
-        Controls.Gameplay.X.performed += ctx => StartHover();
-        Controls.Gameplay.X.canceled += ctx => StopHover();
-        Controls.Gameplay.Move.performed += ctx => _lsMove = ctx.ReadValue<Vector2>();
-        Controls.Gameplay.Move.canceled += ctx => _lsMove = Vector2.zero;
-        Controls.Gameplay.Select.performed += ctx => gameManager.ExitGame();
-        Controls.Gameplay.Down.performed += ctx => CycleSlam();
+        _controls.Gameplay.A.performed += ctx => Jump();
+        _controls.Gameplay.RS.performed += ctx => Jump();
+        _controls.Gameplay.LB.performed += ctx => LeftDash();
+        _controls.Gameplay.RB.performed += ctx => RightDash();
+        _controls.Gameplay.LS.performed += ctx => Slam();
+        _controls.Gameplay.LT.performed += ctx => StartHover();
+        _controls.Gameplay.LT.canceled += ctx => StopHover();
+        _controls.Gameplay.X.performed += ctx => StartHover();
+        _controls.Gameplay.X.canceled += ctx => StopHover();
+        _controls.Gameplay.Move.performed += ctx => _lsMove = ctx.ReadValue<Vector2>();
+        _controls.Gameplay.Move.canceled += ctx => _lsMove = Vector2.zero;
+        _controls.Gameplay.Aim.performed += ctx => rsMove = ctx.ReadValue<Vector2>().normalized;
+        _controls.Gameplay.Aim.canceled += ctx => rsMove = Vector2.zero;
+        _controls.Gameplay.Select.performed += ctx => gameManager.ExitGame();
+        _controls.Gameplay.Down.performed += ctx => CycleSlam();
     }
 
     private void OnEnable()
     {
-        Controls.Gameplay.Enable();
+        _controls.Gameplay.Enable();
     }
 
     private void OnDisable()
     {
-        Controls.Gameplay.Disable();
+        _controls.Gameplay.Disable();
     }
 
     void Start()
@@ -175,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
                 _body.AddForce(_slideJump, ForceMode2D.Impulse);
                 break;
             case State.Clinging:
-                _body.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+                _body.AddForce(rsMove * (jumpHeight * wallKickMultiplier), ForceMode2D.Impulse);
                 _currentState = State.Air;
                 _body.gravityScale = 1;
                 break;

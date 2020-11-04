@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Platform
   - Slide
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -41,10 +42,19 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Platforms
+    uniqueID: 406540485
+    locked: 0
+  - name: Barriers
+    uniqueID: 3928550361
+    locked: 0
+  - name: Characters
+    uniqueID: 894018569
+    locked: 0
+  - name: Masks
+    uniqueID: 2624151181
     locked: 0
