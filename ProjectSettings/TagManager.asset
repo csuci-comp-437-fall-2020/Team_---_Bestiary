@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - Slide
   - Weapon
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -57,4 +58,7 @@ TagManager:
     locked: 0
   - name: Masks
     uniqueID: 2624151181
+    locked: 0
+  - name: Bullets
+    uniqueID: 1387329489
     locked: 0
