@@ -14,6 +14,30 @@
                     "interactions": ""
                 },
                 {
+                    "name": "X",
+                    "type": "Button",
+                    "id": "89c15600-8441-467f-8389-5fde9421fb2d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "B",
+                    "type": "Button",
+                    "id": "90eaba86-1408-4dc2-ba6f-cce3a32a02f2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Y",
+                    "type": "Button",
+                    "id": "b3cef7b9-28cf-4eab-98a0-363b0d279701",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Move",
                     "type": "Value",
                     "id": "f13f0ad2-8e15-4e0d-b417-3e46ec2b62cf",
@@ -30,17 +54,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Select",
+                    "name": "LB",
                     "type": "Button",
-                    "id": "a0183288-e2ed-4396-8fa7-aa72c9bdd23f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Down",
-                    "type": "Button",
-                    "id": "9fb3d25a-8063-4c2a-b829-38ec62958d37",
+                    "id": "cfeeeda5-ebe7-485c-8500-7cab417448e1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -49,14 +65,6 @@
                     "name": "LT",
                     "type": "Button",
                     "id": "94a13996-9ca9-472d-be89-665507ad006d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "LB",
-                    "type": "Button",
-                    "id": "cfeeeda5-ebe7-485c-8500-7cab417448e1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -94,9 +102,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "X",
+                    "name": "Select",
                     "type": "Button",
-                    "id": "89c15600-8441-467f-8389-5fde9421fb2d",
+                    "id": "a0183288-e2ed-4396-8fa7-aa72c9bdd23f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -105,6 +113,38 @@
                     "name": "Start",
                     "type": "Button",
                     "id": "1d00ba40-bd00-4d88-b369-584d5577bd1b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "8fb8f9f8-8e42-436f-ac78-24c90308243a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "ac9707b8-450c-4f65-b01c-2d0081f93dee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "6561fa0d-ad2f-4d86-8b8b-d621e3af1049",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "9fb3d25a-8063-4c2a-b829-38ec62958d37",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -141,39 +181,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8ae702e1-a4b7-40f7-ab51-d78652f14bdd",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1fab93cd-526b-4e47-a3d8-040bce268d59",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3de65dfc-0c1f-403d-9382-457d49da4c5d",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -234,6 +241,72 @@
                 },
                 {
                     "name": "",
+                    "id": "48e5cd7d-542d-4603-b55e-bb805493a4fa",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb91f01d-c7c9-48c8-9e48-5403005e807d",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c55355a-562f-4b0d-90a0-f0c882c203f1",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15fc2377-43a3-40f4-9bde-e0cf68203655",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1fab93cd-526b-4e47-a3d8-040bce268d59",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ae702e1-a4b7-40f7-ab51-d78652f14bdd",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "57737eb4-8d4b-4a3f-ac44-9af65cca3ece",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
@@ -245,12 +318,34 @@
                 },
                 {
                     "name": "",
-                    "id": "48e5cd7d-542d-4603-b55e-bb805493a4fa",
-                    "path": "<Gamepad>/start",
+                    "id": "2a43075d-c06e-4d07-a962-262d20fbcca9",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Start",
+                    "action": "B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ddb7b50-d0be-48a0-924c-f35a0fee0ba8",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3de65dfc-0c1f-403d-9382-457d49da4c5d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

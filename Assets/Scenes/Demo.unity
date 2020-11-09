@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 22630890}
   - component: {fileID: 22630889}
   - component: {fileID: 22630888}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: reaperfire
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -1203,21 +1203,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4315040612786679234, guid: b558ea774c77f9d4587813dfbed6377a,
-        type: 3}
-      propertyPath: m_AutoTiling
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4315040612786679234, guid: b558ea774c77f9d4587813dfbed6377a,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 4315040612786679234, guid: b558ea774c77f9d4587813dfbed6377a,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4315040612786679241, guid: b558ea774c77f9d4587813dfbed6377a,
         type: 3}
       propertyPath: m_Name
@@ -1288,16 +1273,33 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.85
       objectReference: {fileID: 0}
-    - target: {fileID: 4315040612786679245, guid: b558ea774c77f9d4587813dfbed6377a,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.43
-      objectReference: {fileID: 0}
     - target: {fileID: 4315040612786679246, guid: b558ea774c77f9d4587813dfbed6377a,
         type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 298380909}
+    - target: {fileID: 8329375445255002355, guid: b558ea774c77f9d4587813dfbed6377a,
+        type: 3}
+      propertyPath: masks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329375445255002355, guid: b558ea774c77f9d4587813dfbed6377a,
+        type: 3}
+      propertyPath: maskPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329375445255002355, guid: b558ea774c77f9d4587813dfbed6377a,
+        type: 3}
+      propertyPath: masks.Array.data[0]
+      value: 
+      objectReference: {fileID: 4155140212848033155, guid: 15bf1a6b8ebf0f34294e2b84b967ed7c,
+        type: 3}
+    - target: {fileID: 8329375445255002355, guid: b558ea774c77f9d4587813dfbed6377a,
+        type: 3}
+      propertyPath: maskPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4155140212848033155, guid: 15bf1a6b8ebf0f34294e2b84b967ed7c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b558ea774c77f9d4587813dfbed6377a, type: 3}
 --- !u!1001 &4424470151485694325

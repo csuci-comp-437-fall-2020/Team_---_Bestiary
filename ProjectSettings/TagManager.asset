@@ -21,12 +21,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - Background
-  - Characters
-  - Foreground
-  - 
-  - 
+  - Player
+  - Walls
+  - Platforms
+  - Enemies
+  - Bullets
+  - Player Hurtbox
   - 
   - 
   - 

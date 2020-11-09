@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = target;
 #endif
     }
-      
+    
     void Update()
     {
         if(Application.targetFrameRate != target)
