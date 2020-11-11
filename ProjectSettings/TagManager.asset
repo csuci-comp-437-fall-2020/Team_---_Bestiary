@@ -8,6 +8,9 @@ TagManager:
   - Wall
   - Platform
   - Slide
+  - waypoint
+  - enemy
+  - jumppad
   layers:
   - Default
   - TransparentFX
@@ -23,9 +26,6 @@ TagManager:
   - Background
   - Characters
   - Foreground
-  - 
-  - 
-  - 
   - 
   - 
   - 
