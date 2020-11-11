@@ -10,6 +10,8 @@ TagManager:
   - Slide
   - Weapon
   - Bullet
+  - Ceiling
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -53,12 +55,15 @@ TagManager:
   - name: Barriers
     uniqueID: 3928550361
     locked: 0
-  - name: Characters
+  - name: Enemies
+    uniqueID: 841172627
+    locked: 0
+  - name: Bullets
+    uniqueID: 1387329489
+    locked: 0
+  - name: Player
     uniqueID: 894018569
     locked: 0
   - name: Masks
     uniqueID: 2624151181
-    locked: 0
-  - name: Bullets
-    uniqueID: 1387329489
     locked: 0

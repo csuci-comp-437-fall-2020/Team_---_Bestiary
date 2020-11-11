@@ -11,10 +11,10 @@ public class PlayerEffects : ScriptableObject
     public int extraDashes;
     public float wallClingTime;
     public float floatDuration;
-    public int slamPower;
-    public int slamEquipped;
+    [HideInInspector] public int slamPower;
+    [HideInInspector] public int slamEquipped;
     public float gravityScale = 1f;
     public float damageMult = 1f;
     public float fireRateMult = 1f;
-
+    public float knockbackMult = 1f;
 }

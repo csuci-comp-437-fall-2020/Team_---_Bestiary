@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     public static readonly int PerSlot = 3;
 
     public WeaponAim eyes;
-    [SerializeField] private PlayerEffects playerPassives;
+    [SerializeField] private PlayerEffects playerEffects;
     [SerializeField] private Mask[] maskPrefabs;
 
     private PlayerMovement _movement;
@@ -37,7 +37,9 @@ public class PlayerManager : MonoBehaviour
             WeaponAim maskAim = spawnedMask.GetComponent<WeaponAim>();
             spawnedMask.transform.localPosition = new Vector3(maskAim._eyeDistance, 0, 0);
             maskAim.movement = _movement;
-            spawnedMask.movement = _movement;
+            spawnedMask.weaponAim = maskAim;
+            spawnedMask.playerEffects = playerEffects;
+            
             int directionIndex = (int) spawnedMask.slot / 4;
             int maskIndex = (int) spawnedMask.slot % PerSlot;
             if (_masks[directionIndex, maskIndex] == null)
@@ -56,12 +58,19 @@ public class PlayerManager : MonoBehaviour
             spawnedMask.gameObject.SetActive(false);
         }
 
-        // TODO decide this better
         if (currentMask[(int) Direction.Down] >= 0)
         {
-            playerPassives.slamEquipped = currentMask[(int) Direction.Down];
+            int slamEquipped = 0;
+            for (int i = 0; i < currentMask[(int) Direction.Down] ; i++)
+            {
+                if (_masks[(int) Direction.Down, i] != null)
+                    slamEquipped++;
+            }
+            playerEffects.slamEquipped = slamEquipped;
         }
     }
+    
+    
 
     public void CycleRightMask()
     {
@@ -80,6 +89,8 @@ public class PlayerManager : MonoBehaviour
     
     public void CycleDownMask()
     {
+        if (playerEffects.slamPower > 0)
+            playerEffects.slamEquipped = playerEffects.slamEquipped % playerEffects.slamPower + 1;
         CycleMask((int) Direction.Down);
     }
 
@@ -87,6 +98,9 @@ public class PlayerManager : MonoBehaviour
     private void CycleMask(int direction)
     {
         int current = currentMask[direction];
+        if (current < 0)
+            return;
+        
         if (_equippedMask == _masks[direction, current])
         {
             int next = (current + 1) % PerSlot;

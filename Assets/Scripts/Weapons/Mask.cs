@@ -21,8 +21,13 @@ public abstract class Mask : MonoBehaviour
     }
 
     public int powerLevel;
+    public float knockback;
+    public float damage;
+    public float spread;
+    public Bullet bulletPrefab;
     public WeaponSlot slot;
-    [HideInInspector] public PlayerMovement movement;
+    [HideInInspector] public PlayerEffects playerEffects;
+    [HideInInspector] public WeaponAim weaponAim;
 
-    public abstract void Fire(float damageMult, float fireRateMult);
+    public abstract void Fire();
 }

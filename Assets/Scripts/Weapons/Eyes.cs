@@ -13,12 +13,12 @@ public class Eyes : Mask
         _shotCooldown = 0;
     }
 
-    public override void Fire(float damageMult, float fireRateMult)
+    public override void Fire()
     {
         if (_shotCooldown <= 0)
         {
             Debug.Log("I can only witness...");
-            _shotCooldown = shotFrequency * (1f / fireRateMult);
+            _shotCooldown = shotFrequency * (1f / playerEffects.fireRateMult);
         }
     }
 }
