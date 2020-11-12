@@ -1279,7 +1279,7 @@ public class AstarPath : VersionedMonoBehaviour {
 		};
 
 		pathProcessor.OnPathPostSearch += path => {
-			LogPathResults(path);
+			// LogPathResults(path); // Reenable for Path results
 			var tmp = OnPathPostSearch;
 			if (tmp != null) tmp(path);
 		};
