@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private int spawnerLife;
+    public int spawnerLife;
     public GameObject prefab;
     public bool alive;
 

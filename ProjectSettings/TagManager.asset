@@ -8,10 +8,9 @@ TagManager:
   - Wall
   - Platform
   - Slide
-  - Weapon
-  - Bullet
-  - Ceiling
-  - Enemy
+  - waypoint
+  - enemy
+  - jumppad
   layers:
   - Default
   - TransparentFX
@@ -23,12 +22,12 @@ TagManager:
   - 
   - 
   - 
-  - Player
-  - Walls
-  - Platforms
-  - Enemies
-  - Bullets
-  - Player Hurtbox
+  - 
+  - Background
+  - Characters
+  - Foreground
+  - 
+  - 
   - 
   - 
   - 
@@ -48,22 +47,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Platforms
-    uniqueID: 406540485
-    locked: 0
-  - name: Barriers
-    uniqueID: 3928550361
-    locked: 0
-  - name: Enemies
-    uniqueID: 841172627
-    locked: 0
-  - name: Bullets
-    uniqueID: 1387329489
-    locked: 0
-  - name: Player
-    uniqueID: 894018569
-    locked: 0
-  - name: Masks
-    uniqueID: 2624151181
     locked: 0
