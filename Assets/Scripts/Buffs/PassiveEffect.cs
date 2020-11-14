@@ -9,4 +9,5 @@ public class PassiveEffect : ScriptableObject
     public int extraDashes;
     public float wallClingTime;
     public float floatDuration;
+    public bool canWallCling;
 }

@@ -14,9 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float slamGravityScale;
     public float slidingGravityScale;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private PlayerEffects playerEffects;
 
-    
     private Rigidbody2D _body;
     private SpriteRenderer _sprite;
     private BoxCollider2D _collisionBox;
@@ -35,8 +33,9 @@ public class PlayerMovement : MonoBehaviour
     private float _moveSpeed;
     private float _jumpHeight;
 
+    [HideInInspector] public PlayerEffects playerEffects;
     [HideInInspector] public Vector2 rsMove;
-    [HideInInspector] public bool triggerHeld;
+    [HideInInspector] public bool triggerHeld = false;
     
 
     enum State
@@ -69,7 +68,13 @@ public class PlayerMovement : MonoBehaviour
         _controls.Gameplay.Aim.canceled += ctx => rsMove = Vector2.zero;
         _controls.Gameplay.Select.performed += ctx => gameManager.ExitGame();
         _controls.Gameplay.Right.performed += ctx => _playerManager.CycleRightMask();
+        _controls.Gameplay.Left.performed += ctx => _playerManager.CycleLeftMask();
+        _controls.Gameplay.Up.performed += ctx => _playerManager.CycleUpMask();
         _controls.Gameplay.Down.performed += ctx => _playerManager.CycleDownMask();
+        
+        // Demo control
+        _controls.Gameplay.Start.performed += ctx => gameManager.Spawn();
+
     }
 
     private IEnumerator PauseControls(float duration)
@@ -113,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
                 _currentState = State.Platform;
                 break;
             case "Wall":
-                if (_currentState == State.Air || _currentState == State.Floating)
+                if (playerEffects.canWallCling && (_currentState == State.Air || _currentState == State.Floating))
                 {
                     RestoreJumps();
                     _currentState = State.Clinging;

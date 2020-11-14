@@ -12,6 +12,16 @@ PrefabInstance:
       propertyPath: m_ChunkCullingBounds.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1689220212497119412, guid: 314befa9b44cb06449297a194e7f0ed5,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 698314677
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689220212497119412, guid: 314befa9b44cb06449297a194e7f0ed5,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2876290244270988529, guid: 314befa9b44cb06449297a194e7f0ed5,
         type: 3}
       propertyPath: m_Tiles.Array.data[3].second.m_TileIndex

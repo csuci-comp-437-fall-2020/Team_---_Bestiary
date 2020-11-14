@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int target = 60;
+    public GameObject spawnerPrefab;
 
     void Awake()
     {
@@ -27,4 +28,10 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Spawn()
+    {
+        spawnerPrefab.SetActive(true);
+    }
+
 }

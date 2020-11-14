@@ -415,6 +415,11 @@ PrefabInstance:
       propertyPath: m_AutoTiling
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8718473977653346489, guid: cdee6c7586b92d24ca41d8857e6a636f,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.31
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3030770819319985236, guid: cdee6c7586b92d24ca41d8857e6a636f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cdee6c7586b92d24ca41d8857e6a636f, type: 3}

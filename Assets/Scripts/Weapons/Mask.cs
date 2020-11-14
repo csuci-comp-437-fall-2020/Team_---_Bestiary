@@ -6,25 +6,29 @@ public abstract class Mask : MonoBehaviour
 {
     public enum WeaponSlot
     {
-        Right1,
-        Right2,
-        Right3,
-        Left1,
-        Left2,
-        Left3,
-        Up1,
-        Up2,
-        Up3,
-        Down1,
-        Down2,
-        Down3
+        Right1 = 0,
+        Right2 = 1,
+        Right3 = 2,
+        Left1 = 3,
+        Left2 = 4,
+        Left3 = 5,
+        Up1 = 6,
+        Up2 = 7,
+        Up3 = 8,
+        Down1 = 9,
+        Down2 = 10,
+        Down3 = 11
     }
 
-    public int powerLevel;
-    public float knockback;
-    public float damage;
+    public int powerLevel = 10;
+    public float knockback = 1;
+    public float damage = 1;
     public float spread;
+    public float roundsPerSecond = 1;
+    public float bulletSpeed = 1;
+    public float bulletSize = 1;
     public Bullet bulletPrefab;
+    public PassiveEffect passiveEffect;
     public WeaponSlot slot;
     [HideInInspector] public PlayerEffects playerEffects;
     [HideInInspector] public WeaponAim weaponAim;

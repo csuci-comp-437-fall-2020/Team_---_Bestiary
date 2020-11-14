@@ -7,9 +7,6 @@ using Random = UnityEngine.Random;
 
 public class Pistol : Mask
 {
-    [SerializeField] private float roundsPerSecond;
-    [SerializeField] private float bulletSpeed;
-
     private bool _onCooldown;
     private float _shotCooldownTime = 0;
 
@@ -47,6 +44,7 @@ public class Pistol : Mask
 
         Bullet bullet = Instantiate(bulletPrefab, spawnPosition, spawnRotation);
         bullet.damage = Mathf.CeilToInt(damage * playerEffects.damageMult);
+        bullet.gameObject.transform.localScale *= bulletSize;
         Rigidbody2D bulletBody = bullet.GetComponent<Rigidbody2D>();
         bulletBody.velocity = (spawnRotation * Vector3.right) * bulletSpeed;
         bulletBody.mass = knockback * playerEffects.knockbackMult;

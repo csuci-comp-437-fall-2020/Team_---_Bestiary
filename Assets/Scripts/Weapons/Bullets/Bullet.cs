@@ -5,4 +5,5 @@ using UnityEngine;
 public abstract class Bullet : MonoBehaviour
 {
     [HideInInspector] public int damage;
+    [HideInInspector] public float lifetime;
 }
