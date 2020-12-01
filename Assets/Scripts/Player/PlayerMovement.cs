@@ -96,7 +96,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(PauseControls(1.5f));
         _body = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
         _collisionBox = GetComponent<BoxCollider2D>();
@@ -118,12 +117,11 @@ public class PlayerMovement : MonoBehaviour
                 _currentState = State.Platform;
                 break;
             case "Wall":
-                if (playerEffects.canWallCling && (_currentState == State.Air || _currentState == State.Floating))
+                if (_clingTimeLeft > 0 && (_currentState == State.Air || _currentState == State.Floating))
                 {
                     RestoreJumps();
                     _currentState = State.Clinging;
                     _body.velocity = Vector2.zero;
-                    _clingTimeLeft = playerEffects.wallClingTime;
                     _body.gravityScale = 0;
                 }
                 break;
@@ -144,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _hurtBox.enabled = true;
         _body.gravityScale = playerEffects.gravityScale;
+        _clingTimeLeft = playerEffects.wallClingTime;
         _jumpsLeft = playerEffects.extraJumps;
         _dashesLeft = playerEffects.extraDashes;
         _floatTimeLeft = playerEffects.floatDuration;
@@ -160,6 +159,14 @@ public class PlayerMovement : MonoBehaviour
             case "Floor":
             case "Platform":
                 _currentState = State.Air;
+                break;
+            case "Wall":
+                if (_currentState == State.Clinging)
+                {
+                    _clingTimeLeft = 0;
+                    _body.gravityScale = playerEffects.gravityScale;
+                    _currentState = State.Air;
+                }
                 break;
         }
     }
@@ -212,9 +219,7 @@ public class PlayerMovement : MonoBehaviour
                 _body.gravityScale = playerEffects.gravityScale;
                 break;
             case State.Clinging:
-                _currentState = State.Air;
                 _body.AddForce(rsMove * (_jumpHeight * wallKickMultiplier), ForceMode2D.Impulse);
-                _body.gravityScale = playerEffects.gravityScale;
                 break;
         }
     }
@@ -293,7 +298,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         if (_currentState != State.Sliding && _currentState != State.Slamming)
         {
@@ -307,23 +312,30 @@ public class PlayerMovement : MonoBehaviour
             if (movement.x != 0)
                 _sprite.flipX = movement.x < 0;
         }
-        
-        if (_currentState == State.Clinging)
+
+        switch (_currentState)
         {
-            _clingTimeLeft -= Time.deltaTime;
-            if (_clingTimeLeft < 0)
+            case State.Clinging:
             {
-                _currentState = State.Air;
-                _body.gravityScale = playerEffects.gravityScale;
+                _clingTimeLeft -= Time.deltaTime;
+                if (_clingTimeLeft < 0)
+                {
+                    _currentState = State.Air;
+                    _body.gravityScale = playerEffects.gravityScale;
+                }
+
+                break;
             }
-        }
-        else if (_currentState == State.Floating)
-        {
-            _floatTimeLeft -= Time.deltaTime;
-            if (_floatTimeLeft < 0)
+            case State.Floating:
             {
-                _currentState = State.Air;
-                _body.gravityScale = playerEffects.gravityScale;
+                _floatTimeLeft -= Time.deltaTime;
+                if (_floatTimeLeft < 0)
+                {
+                    _currentState = State.Air;
+                    _body.gravityScale = playerEffects.gravityScale;
+                }
+
+                break;
             }
         }
     }

@@ -112,10 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerLevel: 10
   knockback: 1
-  damage: 20
+  damage: 5
   spread: 0
   roundsPerSecond: 1.2
-  bulletSpeed: 0.1
+  bulletSpeed: 0.2
   bulletSize: 1.5
   bulletPrefab: {fileID: 6934717428148704013, guid: 7d5c780a72690e245a88302ebc9dc853,
     type: 3}

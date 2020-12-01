@@ -17,7 +17,7 @@ public class GenericBullet : Bullet
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_body.velocity.magnitude < _speed)
         {

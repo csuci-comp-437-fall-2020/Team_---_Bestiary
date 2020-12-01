@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public class BatCombat : MonoBehaviour
+public class BatCombat : Combat
 {
-    public EnemyStats baseStats;
-
     private Animator _animator;
     private bool _isAlive = true;
     private EnemyStats _enemyStats;
@@ -46,7 +44,7 @@ public class BatCombat : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         _animator.SetTrigger(Hit);
         _enemyStats.hitPoints -= damage;
@@ -60,14 +58,14 @@ public class BatCombat : MonoBehaviour
         }
     }
 
-    public void HealDamage(int heal)
+    public override void HealDamage(int heal)
     {
         _enemyStats.hitPoints = Math.Min(heal + _enemyStats.hitPoints, _enemyStats.maxHitPoints);
     }
 
     private IEnumerator Die()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2.5f);
         Destroy(gameObject);
     }
 }
