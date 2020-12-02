@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8256169967687502748}
   - component: {fileID: 8256169967687502751}
   - component: {fileID: 8256169967687502750}
-  - component: {fileID: 8256169967687502746}
+  - component: {fileID: 5095481550031526072}
   m_Layer: 14
   m_Name: reaperfire
   m_TagString: Bullet
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1387329489
+  m_SortingLayerID: -1930690623
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bb039ca7394313c4cba69e08157daafb, type: 3}
@@ -131,7 +131,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8256169967687502746
+--- !u!114 &5095481550031526072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,8 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8256169967687502737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b17a60caca31f54f93b823ecd0ab408, type: 3}
+  m_Script: {fileID: 11500000, guid: d67bcac4b76a7bc4f840ce50c2f0778f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  knockback: 0.2
+  damage: 0

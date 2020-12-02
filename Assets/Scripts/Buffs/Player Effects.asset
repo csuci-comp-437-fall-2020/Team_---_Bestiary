@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d6a92cdea8b024386a71de487cbcc1, type: 3}
   m_Name: Player Effects
   m_EditorClassIdentifier: 
+  maxHitPoints: 50
+  effectiveHitPoints: 0
+  hitPoints: 50
+  damageResistance: 0
   jumpHeightMult: 1
   moveSpeedMult: 1
   extraJumps: 0
@@ -19,6 +23,9 @@ MonoBehaviour:
   wallClingTime: 0
   floatDuration: 0
   slamPower: 0
+  slamEquipped: 0
   gravityScale: 1
   damageMult: 1
   fireRateMult: 1
+  knockbackMult: 1
+  canWallCling: 0
