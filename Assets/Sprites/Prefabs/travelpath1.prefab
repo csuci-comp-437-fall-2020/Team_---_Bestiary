@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 956002148605421992}
   m_Layer: 0
-  m_Name: travelpath
+  m_Name: travelpath1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
