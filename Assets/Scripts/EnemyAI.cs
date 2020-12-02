@@ -20,20 +20,24 @@ public class EnemyAI : MonoBehaviour
     IEnumerator coroutine;
     Seeker seeker;
     Rigidbody2D rigidB;
+    private Animator _anim;
+    private static readonly int Speed = Animator.StringToHash("Speed");
+
 
     // Start is called before the first frame update
     void Start()
     {
-        waypointArray = GameObject.FindGameObjectsWithTag("waypoint");
+        waypointArray = GameObject.FindGameObjectsWithTag("Waypoint");
         seeker = GetComponent<Seeker>();
         rigidB = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
 
         InvokeRepeating("UpdatePath", 0f, 0.25f);
     }
 
     void UpdatePath()
     {
-        if(Vector3.Distance(rigidB.position, target.position) > 1.0f)
+        if(Vector3.Distance(rigidB.position, target.position) > 0.1f)
         {
             seeker.StartPath(rigidB.position, target.position, OnPathComplete);
         }
@@ -50,23 +54,22 @@ public class EnemyAI : MonoBehaviour
     
     public IEnumerator cycleTarget(GameObject[] waypoints)
     {
+        if (waypointArray.Length == 0)
+        {
+            attacking = true;
+        }
         while (!attacking)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
-                if(i < 3)
-                {
-                    target = waypoints[i].transform;
+                    target = waypoints[i % waypoints.Length].transform;
                     yield return new WaitForSecondsRealtime(3.0f);
-                }
-                else
-                {
-                    attacking = true;
-                    target = GameObject.FindGameObjectWithTag("Player").transform;
-                    yield return new WaitForSecondsRealtime(15.0f);
-                    attacking = false;
-                }
             }
+            
+            attacking = true;
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            yield return new WaitForSecondsRealtime(10.0f);
+            attacking = false;
         }
     }
 
@@ -93,6 +96,12 @@ public class EnemyAI : MonoBehaviour
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rigidB.position).normalized;
         Vector2 force = direction * (speed * Time.deltaTime);
+        
+        if (Mathf.Abs(rigidB.velocity.x) > 0.1f)
+        {
+            Vector3 lscale = gameObject.transform.localScale; 
+            gameObject.transform.localScale = new Vector3(Mathf.Sign(rigidB.velocity.x) * Mathf.Abs(lscale.x), lscale.y, 1);
+        }
 
         rigidB.AddForce(force);
 

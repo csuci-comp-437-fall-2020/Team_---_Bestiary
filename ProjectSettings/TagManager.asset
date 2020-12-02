@@ -8,9 +8,15 @@ TagManager:
   - Wall
   - Platform
   - Slide
-  - waypoint
   - enemy
+  - Spawner
   - jumppad
+  - Weapon
+  - Bullet
+  - Ceiling
+  - Enemy
+  - Waypoint
+  - PlayerHurtbox
   - waypoint2
   - wallenemy
   layers:
@@ -23,12 +29,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - Background
-  - Characters
-  - Foreground
-  - 
+  - PlayerHurtbox
+  - Player
+  - Barriers
+  - Enemies
+  - Platforms
+  - Bullet
   - 
   - 
   - 
@@ -49,4 +55,25 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Platform
+    uniqueID: 1619990063
+    locked: 0
+  - name: Barrier
+    uniqueID: 698314677
+    locked: 0
+  - name: Spawner
+    uniqueID: 3176281883
+    locked: 0
+  - name: Enemy
+    uniqueID: 1581133031
+    locked: 0
+  - name: Player
+    uniqueID: 2951477967
+    locked: 0
+  - name: Bullet
+    uniqueID: 2364276673
+    locked: 0
+  - name: Mask
+    uniqueID: 450400295
     locked: 0
