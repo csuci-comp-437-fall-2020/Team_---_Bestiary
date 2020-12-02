@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Platform
   - Slide
+  - enemy
+  - Spawner
   - jumppad
   - Weapon
   - Bullet
@@ -15,8 +17,8 @@ TagManager:
   - Enemy
   - Waypoint
   - PlayerHurtbox
-  - enemy
-  - Spawner
+  - waypoint2
+  - wallenemy
   layers:
   - Default
   - TransparentFX
