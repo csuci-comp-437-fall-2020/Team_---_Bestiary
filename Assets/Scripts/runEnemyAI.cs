@@ -4,52 +4,74 @@ using UnityEngine;
 
 public class runEnemyAI : MonoBehaviour
 {
-    public Transform target;
-    public float speed = 30.0f;
-    private IEnumerator coroutine;
-    private Rigidbody2D rigidB;
-    bool jumping;
+    public float moveSpeed;
+    private float moveDirection = 1; 
+    public Transform groundCheck;
+    public Transform wallCheck;
+    public float circleRadius;
+    public LayerMask groundLayer;
+    private bool checkingWall;
+    private bool checkingGround;
+
+    public float jumpHeight;
+    public Transform destination;
+    public Transform touchingCheck;
+    public Vector2 boxSize;
+    private bool grounded;
+
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        rigidB = GetComponent<Rigidbody2D>();
-        coroutine = WaitToRun();
-        jumping = false;
-    }
-
-    public IEnumerator WaitToRun()
-    {
-        yield return new WaitForSecondsRealtime(3.0f);
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
     {
-        Vector2 direction = new Vector2(target.position.x, 0);
-        Vector2 trueSpeed =  new Vector2(speed * Time.deltaTime, 0);
-
-        if(!jumping)
+        checkingGround = Physics2D.OverlapCircle(groundCheck.position, circleRadius, groundLayer);
+        checkingWall = Physics2D.OverlapCircle(wallCheck.position, circleRadius, groundLayer);
+        grounded = Physics2D.OverlapBox(touchingCheck.position, boxSize, 0, groundLayer);
+        OnPatrol();
+    }
+    
+    void OnPatrol()
+    {   
+        if (checkingWall)
         {
-            if(transform.position.x < (direction.x - 1))
+            if (moveDirection > 0)
             {
-                rigidB.AddForce(transform.right * speed);      
+                Flip();
             }
+            else 
+            {
+                Flip();
+            }
+        }
+        rb.velocity = new Vector2(moveSpeed * moveDirection, rb.velocity.y);
+    }
 
-            if(transform.position.x > (direction.x + 1))
-            {
-            
-                rigidB.AddForce(-transform.right * speed);
-            }
+    void Jump()
+    {
+        float xDistanceFromDestination = destination.position.x - transform.position.x;
+
+        if (grounded)
+        {
+            rb.AddForce(new Vector2(xDistanceFromDestination, jumpHeight), ForceMode2D.Impulse);
         }
     }
     
+    void Flip()
+    {
+        moveDirection *= -1;
+        transform.Rotate(0, 180, 0);
+    }
+
     void OnTriggerEnter2D(Collider2D col)
-    {    
-        if(col.tag == "jumppad")
+    {
+        if (col.CompareTag("jumppad"))
         {
-            jumping = true;
-            Transform destination = col.GetComponentInChildren<Transform>();
-            rigidB.AddForce(transform.up * 20.0f, ForceMode2D.Impulse);
+            Jump();
         }
     }
 }

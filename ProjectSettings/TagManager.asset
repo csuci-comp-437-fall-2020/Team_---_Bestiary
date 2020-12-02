@@ -11,6 +11,8 @@ TagManager:
   - waypoint
   - enemy
   - jumppad
+  - waypoint2
+  - wallenemy
   layers:
   - Default
   - TransparentFX
