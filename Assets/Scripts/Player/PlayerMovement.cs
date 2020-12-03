@@ -66,15 +66,13 @@ public class PlayerMovement : MonoBehaviour
         _controls.Gameplay.Move.canceled += ctx => _lsMove = Vector2.zero;
         _controls.Gameplay.Aim.performed += ctx => rsMove = ctx.ReadValue<Vector2>().normalized;
         _controls.Gameplay.Aim.canceled += ctx => rsMove = Vector2.zero;
-        _controls.Gameplay.Select.performed += ctx => gameManager.ExitGame();
         _controls.Gameplay.Right.performed += ctx => _playerManager.CycleRightMask();
         _controls.Gameplay.Left.performed += ctx => _playerManager.CycleLeftMask();
         _controls.Gameplay.Up.performed += ctx => _playerManager.CycleUpMask();
         _controls.Gameplay.Down.performed += ctx => _playerManager.CycleDownMask();
         
-        // Demo control
-        _controls.Gameplay.Start.performed += ctx => gameManager.Spawn();
-
+        _controls.Gameplay.Select.performed += ctx => gameManager.ExitGame();
+        _controls.Gameplay.Start.performed += ctx => gameManager.Restart();
     }
 
     private IEnumerator PauseControls(float duration)
@@ -88,11 +86,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _controls.Gameplay.Enable();
     }
-
-    private void OnDisable()
-    {
-        _controls.Gameplay.Disable();
-    }
+    
+    // private void OnDisable()
+    // {
+    //     _controls.Gameplay.Disable();
+    // }
 
     void Start()
     {

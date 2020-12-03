@@ -47,11 +47,11 @@ public class Shotgun : Mask
         for (int i = 0; i < pelletCount; i++)
         {
             float rotation = (2f * i / (pelletCount - 1) - 1) * pelletFanWidth / 2f;
-            Debug.Log(rotation); 
             pelletRotations[i] = Quaternion.Euler(0, 0, rotation) * spawnRotation;
             pelletRotations[i] *= Quaternion.Euler(0, 0, Random.Range(-spread, spread));
 
             Bullet bullet = Instantiate(bulletPrefab, spawnPosition, pelletRotations[i]);
+            bullet.reflectCount = reflectCount + playerEffects.reflectCount;
             bullet.gameObject.transform.localScale *= bulletSize;
             bullet.damage = Mathf.CeilToInt(damage * playerEffects.damageMult);
             Rigidbody2D bulletBody = bullet.GetComponent<Rigidbody2D>();

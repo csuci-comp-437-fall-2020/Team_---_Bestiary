@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player Effects")]
 public class PlayerEffects : ScriptableObject
 {
-    public int maxHitPoints = 10;
+    public int maxHitPoints = 100;
     public int effectiveHitPoints;
-    public int hitPoints = 10;
+    public int hitPoints = 100;
     public float damageResistance;
     public float jumpHeightMult = 1f;
     public float moveSpeedMult = 1f;
@@ -21,5 +21,6 @@ public class PlayerEffects : ScriptableObject
     public float damageMult = 1f;
     public float fireRateMult = 1f;
     public float knockbackMult = 1f;
+    public int reflectCount = 0;
     public bool canWallCling;
 }

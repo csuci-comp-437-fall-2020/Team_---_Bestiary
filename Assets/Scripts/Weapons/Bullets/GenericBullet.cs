@@ -30,8 +30,8 @@ public class GenericBullet : Bullet
         switch (other.gameObject.tag)
         {
             case "Enemy":
-                BatCombat batCombat = other.gameObject.GetComponent<BatCombat>();
-                batCombat.TakeDamage(damage);
+                Combat combat = other.gameObject.GetComponent<Combat>();
+                combat.TakeDamage(damage);
                 
                 if (reflectCount <= 0)
                     Destroy(gameObject);

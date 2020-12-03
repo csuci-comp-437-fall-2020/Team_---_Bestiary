@@ -9,7 +9,6 @@ public class Pistol : Mask
 {
     private bool _onCooldown;
     private float _shotCooldownTime = 0;
-    [SerializeField] private int reflectCount;
 
     
     private void OnEnable()
@@ -45,7 +44,7 @@ public class Pistol : Mask
 
         Bullet bullet = Instantiate(bulletPrefab, spawnPosition, spawnRotation);
         bullet.damage = Mathf.CeilToInt(damage * playerEffects.damageMult);
-        bullet.reflectCount = reflectCount;
+        bullet.reflectCount = reflectCount + playerEffects.reflectCount;
         bullet.gameObject.transform.localScale *= bulletSize;
         Rigidbody2D bulletBody = bullet.GetComponent<Rigidbody2D>();
         bulletBody.velocity = (spawnRotation * Vector3.right) * bulletSpeed;

@@ -25,6 +25,7 @@ public class runEnemyAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        destination = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void FixedUpdate()

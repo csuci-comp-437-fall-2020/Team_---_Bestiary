@@ -27,6 +27,7 @@ public abstract class Mask : MonoBehaviour
     public float roundsPerSecond = 1;
     public float bulletSpeed = 1;
     public float bulletSize = 1;
+    public int reflectCount;
     public Bullet bulletPrefab;
     public PassiveEffect passiveEffect;
     public WeaponSlot slot;

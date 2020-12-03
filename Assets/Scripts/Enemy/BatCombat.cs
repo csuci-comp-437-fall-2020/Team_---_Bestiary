@@ -7,8 +7,6 @@ using UnityEngine;
 public class BatCombat : Combat
 {
     private Animator _animator;
-    private bool _isAlive = true;
-    private EnemyStats _enemyStats;
     private EnemyAI _enemyAI;
     private Rigidbody2D _body;
     private static readonly int PlayDead = Animator.StringToHash("PlayDead");
@@ -20,24 +18,24 @@ public class BatCombat : Combat
         _animator = GetComponent<Animator>();
         _enemyAI = GetComponent<EnemyAI>();
         _body = GetComponent<Rigidbody2D>();
-        _enemyStats = Instantiate(baseStats);
-        _enemyStats.hitPoints = _enemyStats.maxHitPoints;
+        enemyStats = Instantiate(baseStats);
+        enemyStats.hitPoints = enemyStats.maxHitPoints;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         switch (other.gameObject.tag)
         {
-            case "PlayerHurtbox":
-                if (_isAlive)
+            case "Player":
+                if (isAlive)
                 {
                     PlayerHealth playerHealth = other.gameObject.GetComponentInParent<PlayerHealth>();
-                    playerHealth.TakeDamage(_enemyStats.damage);                    
+                    playerHealth.TakeDamage(enemyStats.damage);                    
                 }
                 break;
             case "Platform":
             case "Floor":
-                if (!_isAlive)
+                if (!isAlive)
                     _animator.SetTrigger(PlayDead);
                 break;
                 
@@ -47,20 +45,21 @@ public class BatCombat : Combat
     public override void TakeDamage(int damage)
     {
         _animator.SetTrigger(Hit);
-        _enemyStats.hitPoints -= damage;
-        if (_enemyStats.hitPoints <= 0)
+        enemyStats.hitPoints -= damage;
+        if (enemyStats.hitPoints <= 0)
         {
-            _isAlive = false;
+            isAlive = false;
             _enemyAI.enabled = false;
             _body.gravityScale = 1;
             _animator.SetBool(Dead, true);
+            DropOnDeath();
             StartCoroutine(Die());
         }
     }
 
     public override void HealDamage(int heal)
     {
-        _enemyStats.hitPoints = Math.Min(heal + _enemyStats.hitPoints, _enemyStats.maxHitPoints);
+        enemyStats.hitPoints = Math.Min(heal + enemyStats.hitPoints, enemyStats.maxHitPoints);
     }
 
     private IEnumerator Die()

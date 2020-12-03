@@ -11,7 +11,6 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnerLife = 3;
         alive = true;
         StartCoroutine(SpawnCreature(prefab));
     }

@@ -103,13 +103,13 @@ MonoBehaviour:
   roundsPerSecond: 1.45
   bulletSpeed: 20
   bulletSize: 1
-  bulletPrefab: {fileID: 5095481550031526072, guid: 6352d0f014270004d84e7d5c0058633b,
+  reflectCount: 0
+  bulletPrefab: {fileID: -4578660068617460388, guid: 6352d0f014270004d84e7d5c0058633b,
     type: 3}
   passiveEffect: {fileID: 11400000, guid: 84405dbdaf9dbbc4fada3e68c95c28da, type: 2}
   slot: 0
   playerEffects: {fileID: 0}
   weaponAim: {fileID: 0}
-  reflectCount: 2
 --- !u!114 &1737918901266401728
 MonoBehaviour:
   m_ObjectHideFlags: 0

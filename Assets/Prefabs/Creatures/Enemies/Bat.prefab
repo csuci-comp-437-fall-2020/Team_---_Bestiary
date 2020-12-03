@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 277048300274614259}
   - component: {fileID: 3814649064333278078}
   - component: {fileID: 2551237668575114784}
-  m_Layer: 12
+  m_Layer: 16
   m_Name: Bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -201,3 +201,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: 4b3c63f985c0bc548884a92e98351c75, type: 2}
+  isAlive: 1
+  pickupPrefabs:
+  - {fileID: 5297232546825225832, guid: c4d1dfc799429eb4e98d0ead85d96be2, type: 3}
+  - {fileID: 8243229680313980055, guid: 9935ce406bbbaaf499ca77bb91bcf9cd, type: 3}
+  - {fileID: 4768655054172423300, guid: cf36ba4d6dfe7a3419781af45565b38b, type: 3}
+  - {fileID: 1757239703010300566, guid: d7b39784410f5be49bfd494fcd174d45, type: 3}
+  enemyStats: {fileID: 0}
