@@ -232,6 +232,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4155140212848033155, guid: 15bf1a6b8ebf0f34294e2b84b967ed7c,
         type: 3}
+    - target: {fileID: 8330685247154432702, guid: b558ea774c77f9d4587813dfbed6377a,
+        type: 3}
+      propertyPath: displayHealthPrefab
+      value: 
+      objectReference: {fileID: 6764151716055585546, guid: 934f6bc377b74f943870f277d58c343a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b558ea774c77f9d4587813dfbed6377a, type: 3}
 --- !u!1001 &310816518
