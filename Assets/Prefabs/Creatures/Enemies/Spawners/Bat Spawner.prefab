@@ -63,7 +63,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -94,9 +94,8 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 2482014102518608977, guid: 9395a9daef65a684184570368be821bb,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -109,8 +108,9 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -7225512925871877664, guid: 9395a9daef65a684184570368be821bb,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 2482014102518608977, guid: 9395a9daef65a684184570368be821bb,
+      type: 3}
   m_TileMatrixArray:
   - m_RefCount: 4
     m_Data:
@@ -294,4 +294,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnerLife: 5
   prefab: {fileID: 5358368052089977439, guid: 0d78051cd5e7d434e870982f3b94dc57, type: 3}
-  alive: 0
+  alive: 1

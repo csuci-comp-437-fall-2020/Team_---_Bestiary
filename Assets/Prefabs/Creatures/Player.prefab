@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 4315040612786679235}
   - component: {fileID: 4315040612786679234}
   - component: {fileID: 8329375445255002355}
+  - component: {fileID: 8330685247154432702}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -121,7 +122,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1343489329
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fb6e33f431fad1a4b81c478cc6016c0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -220,6 +221,22 @@ MonoBehaviour:
   eyes: {fileID: 4175443720428090540}
   baseEffects: {fileID: 11400000, guid: 843e3294ead971b43aaccf5603f9c5be, type: 2}
   maskPrefabs: []
+--- !u!114 &8330685247154432702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4315040612786679241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d94b93b9eb21a43aba6a63f368e9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerEffects: {fileID: 0}
+  displayHealthPrefab: {fileID: 7378410618870853976, guid: 934f6bc377b74f943870f277d58c343a,
+    type: 3}
+  isAlive: 1
 --- !u!1001 &5914366753416542346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -245,7 +262,7 @@ PrefabInstance:
     - target: {fileID: 8287057493912662402, guid: 85acdbf95efe2224fa0ca7f4a2c53994,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8287057493912662403, guid: 85acdbf95efe2224fa0ca7f4a2c53994,
         type: 3}

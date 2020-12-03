@@ -198,7 +198,7 @@ MonoBehaviour:
   roundsPerSecond: 1
   bulletSpeed: 15
   bulletSize: 3
-  bulletPrefab: {fileID: 817558175071759912, guid: 8770befc1fb364f4c934d9f23d5e3ffc,
+  bulletPrefab: {fileID: 5137073831402312112, guid: 8770befc1fb364f4c934d9f23d5e3ffc,
     type: 3}
   passiveEffect: {fileID: 11400000, guid: 8aab79d84fd8139419ebcedb2e934804, type: 2}
   slot: 3

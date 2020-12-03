@@ -34,24 +34,19 @@ public class PlayerManager : MonoBehaviour
         _equippedMask = eyes.gameObject.GetComponent<Mask>();
         _playerEffects = Instantiate(baseEffects);
         _movement.playerEffects = _playerEffects;
-        _playerHealth = gameObject.AddComponent<PlayerHealth>();
+        _playerHealth = gameObject.GetComponent<PlayerHealth>();
         _playerHealth.playerEffects = _playerEffects;
 
         foreach (Mask mask in maskPrefabs)
         {
-            Debug.Log("Yes this loaded");
             Mask spawnedMask = Instantiate(mask, transform, true);
             WeaponAim maskAim = spawnedMask.GetComponent<WeaponAim>();
-            if (maskAim == null)
-                Debug.Log("Failed to get mask aim");
+            
             spawnedMask.transform.localPosition = new Vector3(maskAim._eyeDistance, 0, 0);
             maskAim.movement = _movement;
             spawnedMask.weaponAim = maskAim;
             spawnedMask.playerEffects = _playerEffects;
             
-            if (spawnedMask.weaponAim == null)
-                Debug.Log("Failed to assign mask aim");
-
             // TODO function
             if (spawnedMask.passiveEffect != null)
             {
@@ -82,11 +77,18 @@ public class PlayerManager : MonoBehaviour
 
         _playerHealth.RecalculateHitPoints(true);
         RecalculateSlamEquipped();
-        Debug.Log("It went all the way");
-
     }
     
-    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Pickup":
+                Debug.Log("Collided");
+                Pickup(other.gameObject.GetComponent<Pickup>());
+                break;
+        }
+    }
 
     public void CycleRightMask()
     {
@@ -156,5 +158,54 @@ public class PlayerManager : MonoBehaviour
             }
             _playerEffects.slamEquipped = slamEquipped;
         }
+    }
+
+    public void Pickup(Pickup pickup)
+    {
+        if (pickup.permanent)
+        {
+            ApplyBuff(pickup.effect);
+            Destroy(pickup.gameObject);
+        }
+        else
+        {
+            Buff tempBuff = Instantiate(pickup.effect);
+            StartCoroutine(TempBuff(tempBuff, pickup.duration));
+            Destroy(pickup.gameObject);
+            
+        }
+    }
+
+    public IEnumerator TempBuff(Buff buff, float duration)
+    {
+        ApplyBuff(buff);
+        yield return new WaitForSeconds(duration);
+        ApplyDebuff(buff);
+    }
+
+    public void ApplyBuff(Buff buff)
+    {
+    _playerEffects.damageResistance += buff.damageResistance;
+    _playerEffects.jumpHeightMult += buff.jumpHeightMult;
+    _playerEffects.moveSpeedMult += buff.moveSpeedMult;
+    _playerEffects.damageMult += buff.damageMult;
+    _playerEffects.fireRateMult += buff.fireRateMult;
+    _playerEffects.knockbackMult += buff.knockbackMult;
+    _playerEffects.reflectCount += buff.reflectCount;
+    if (buff.damageResistance > 0)
+        _playerHealth.RecalculateHitPoints(true);
+    }
+
+    public void ApplyDebuff(Buff buff)
+    {
+        _playerEffects.damageResistance -= buff.damageResistance;
+        _playerEffects.jumpHeightMult -= buff.jumpHeightMult;
+        _playerEffects.moveSpeedMult -= buff.moveSpeedMult;
+        _playerEffects.damageMult -= buff.damageMult;
+        _playerEffects.fireRateMult -= buff.fireRateMult;
+        _playerEffects.knockbackMult -= buff.knockbackMult;
+        _playerEffects.reflectCount -= buff.reflectCount;
+        if (buff.damageResistance > 0)
+            _playerHealth.RecalculateHitPoints(true);
     }
 }

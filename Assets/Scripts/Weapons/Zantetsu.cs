@@ -27,10 +27,6 @@ public class Zantetsu : Mask
         }
         else
         {
-            if (weaponAim == null)
-                Debug.Log("Weapon aim");
-            if (weaponAim.movement == null)
-                Debug.Log("movement");
             if (weaponAim.movement.triggerHeld)
                 Fire();
         }
