@@ -232,7 +232,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4155140212848033155, guid: 15bf1a6b8ebf0f34294e2b84b967ed7c,
         type: 3}
-    - target: {fileID: 8330685247154432702, guid: b558ea774c77f9d4587813dfbed6377a,
+    - target: {fileID: 8329375445255002355, guid: b558ea774c77f9d4587813dfbed6377a,
         type: 3}
       propertyPath: displayHealthPrefab
       value: 

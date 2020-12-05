@@ -19,9 +19,12 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         // _hurtbox = GetComponentInChildren<CircleCollider2D>();
-        _displayHealth = Instantiate(displayHealthPrefab);
-        _healthText = _displayHealth.GetComponentInChildren<Text>();
-        _healthText.text = $"HP: {playerEffects.hitPoints}";
+        if (displayHealthPrefab)
+        {
+            _displayHealth = Instantiate(displayHealthPrefab);
+            _healthText = _displayHealth.GetComponentInChildren<Text>();
+            _healthText.text = $"HP: {playerEffects.hitPoints}";
+        }
     }
 
     public void TakeDamage(int damage)
@@ -31,7 +34,8 @@ public class PlayerHealth : MonoBehaviour
         if (playerEffects.hitPoints <= 0)
         {
             isAlive = false;
-            _displayHealth.gameObject.SetActive(false);
+            if (_displayHealth)
+                _displayHealth.gameObject.SetActive(false);
         }
         _healthText.text = $"HP: {playerEffects.hitPoints}";
 
@@ -55,6 +59,7 @@ public class PlayerHealth : MonoBehaviour
         float eHP = playerEffects.damageResistance >= 100 ? Mathf.Infinity : 100 / (100 - playerEffects.damageResistance);
         playerEffects.effectiveHitPoints = Mathf.CeilToInt(playerEffects.maxHitPoints * eHP);
         playerEffects.hitPoints = setHpToMax ? playerEffects.effectiveHitPoints : Mathf.CeilToInt(playerEffects.hitPoints * eHP);
-        _healthText.text = $"HP: {playerEffects.hitPoints}";
+        if (_healthText)
+            _healthText.text = $"HP: {playerEffects.hitPoints}";
     }
 }

@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     public WeaponAim eyes;
     [SerializeField] private PlayerEffects baseEffects;
     [SerializeField] private Mask[] maskPrefabs;
+    [SerializeField] private GameObject displayHealthPrefab;
 
     private PlayerMovement _movement;
 
@@ -34,7 +35,8 @@ public class PlayerManager : MonoBehaviour
         _equippedMask = eyes.gameObject.GetComponent<Mask>();
         _playerEffects = Instantiate(baseEffects);
         _movement.playerEffects = _playerEffects;
-        _playerHealth = gameObject.GetComponent<PlayerHealth>();
+        _playerHealth = gameObject.AddComponent<PlayerHealth>();
+        _playerHealth.displayHealthPrefab = displayHealthPrefab;
         _playerHealth.playerEffects = _playerEffects;
 
         foreach (Mask mask in maskPrefabs)
