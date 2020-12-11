@@ -8,6 +8,7 @@ public abstract class Combat : MonoBehaviour
     public EnemyStats baseStats;
     public bool isAlive = true;
     public GameObject[] pickupPrefabs;
+    public float percentDropRate;
     [HideInInspector] public EnemyStats enemyStats;
     
 
@@ -19,7 +20,7 @@ public abstract class Combat : MonoBehaviour
 
     public virtual void DropOnDeath()
     {
-        if (Random.Range(0, 15) == 0)
+        if (Random.Range(0, 25) == 0)
         {
             Instantiate(pickupPrefabs[Random.Range(0, 100) % pickupPrefabs.Length], transform.position, Quaternion.identity);
         }

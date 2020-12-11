@@ -11,9 +11,11 @@ public class EndlessWave : MonoBehaviour
      public EnemySpawner flyerSpawnPrefab;
      public EnemySpawner walkerSpawnPrefab;
      public EnemySpawner crawlerSpawnPrefab;
-     public float waveDuration = 20f;
-     public float waveShrinker = 0.95f;
-     public int waveSpawns = 3;
+     public float waveDuration = 30f;
+     public float waveShrinker = 0.98f;
+     public int enemiesPerSpawner = 3;
+     public int maxEnemySpawners = 7;
+     public int enemySpawnLimit = 15;
      public Canvas prefabCanvas;
      public GameObject gameOverPrefab;
 
@@ -22,14 +24,18 @@ public class EndlessWave : MonoBehaviour
      public float UpperBounds;
      public float LowerBounds;
 
+     private List<EnemySpawner> _spawners = new List<EnemySpawner>();
+     private int _nextSpawnerIndex;
+     private int _spawnCount;
      private bool _gameOver;
      private Canvas _canvas;
      private GameObject _gameOverPanel;
      private Text _text;
      private Animator _textAnimator;
-     private float _timer;
+     [SerializeField] private float timer;
+
      
-     private int _waveCounter = 0;
+     private int _waveCounter;
      
      private static readonly int TimeInterval = Animator.StringToHash("TimeInterval");
      private static readonly int Over = Animator.StringToHash("GameOver");
@@ -42,24 +48,22 @@ public class EndlessWave : MonoBehaviour
             Destroy(SharedInstance);
         }
         SharedInstance = this;
+        _canvas = Instantiate(prefabCanvas);
+        _text = _canvas.GetComponentInChildren<Text>();
+        _gameOverPanel = Instantiate(gameOverPrefab, _canvas.transform);
+        _gameOverPanel.SetActive(false);
+        _textAnimator = _text.GetComponent<Animator>();
+        InitializeSpawners();
     }
 
-     private void Start()
-     {
-         _canvas = Instantiate(prefabCanvas);
-         _text = _canvas.GetComponentInChildren<Text>();
-         _gameOverPanel = Instantiate(gameOverPrefab, _canvas.transform);
-         _gameOverPanel.SetActive(false);
-         _textAnimator = _text.GetComponent<Animator>();
-     }
 
      void Update()
      {
          if (!_gameOver)
          {
-             _timer += Time.deltaTime;
-             _text.text = $"{(int) _timer / 60}:{_timer % 60:00.000}";
-             if (_timer >= waveDuration * _waveCounter)
+             timer += Time.deltaTime;
+             _text.text = $"{(int) timer / 60}:{timer % 60:00.000}";
+             if (timer >= waveDuration * _waveCounter)
              {
                  waveDuration *= waveShrinker;
                  _textAnimator.SetTrigger(TimeInterval);
@@ -71,39 +75,62 @@ public class EndlessWave : MonoBehaviour
 
     private void Spawn()
     {
-        int enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        _spawnCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
         
-        int enemiesToSpawn = _waveCounter * waveSpawns - enemyCount;
+        if ( _spawnCount >= enemySpawnLimit)
+            return;
 
-        if (enemiesToSpawn > 0)
+        int index = _nextSpawnerIndex;
+        EnemySpawner spawner = _spawners[index];
+        index = (index + 1) % _spawners.Count;
+        while (spawner.enabled && index != _nextSpawnerIndex)
         {
-            enemiesToSpawn = Random.Range(1, enemiesToSpawn);
+            spawner = _spawners[index];
+            index = (index + 1) % _spawners.Count;
+        }
+        if (index == _nextSpawnerIndex)
+            return;
+        
+        spawner.gameObject.SetActive(true);
+        spawner.enabled = true;
+        
+        _nextSpawnerIndex = (_nextSpawnerIndex + 1) % _spawners.Count;
+    }
+
+    private void InitializeSpawners()
+    {
+        for (int i = 0; i < maxEnemySpawners; i++)
+        {
+            EnemySpawner spawner;
             
             float positionX = Random.Range(LeftBounds, RightBounds);
             float positionY = Random.Range(LowerBounds, UpperBounds);
-
-            EnemySpawner spawner;
 
             switch (Random.Range(0, 100))
             {
                 case int n when (n >= 0 && n < 40):
                     spawner = Instantiate(flyerSpawnPrefab, new Vector3(positionX, positionY),
                         Quaternion.identity);
-                    spawner.spawnerLife = enemiesToSpawn;
-                    Debug.Log("Spawned: " + enemiesToSpawn + " flying enemies");
+                    spawner.spawnerLife = enemiesPerSpawner;
+                    spawner.gameObject.SetActive(false);
+                    spawner.enabled = false;
+                    _spawners.Add(spawner);
                     break;
                 case int n when (n >= 40 && n < 80):
                     spawner = Instantiate(walkerSpawnPrefab, new Vector3(positionX, positionY),
                         Quaternion.identity);
-                    spawner.spawnerLife = enemiesToSpawn;
-                    Debug.Log("Spawned: " + enemiesToSpawn + " walking enemies");
+                    spawner.spawnerLife = enemiesPerSpawner;
+                    spawner.gameObject.SetActive(false);
+                    spawner.enabled = false;
+                    _spawners.Add(spawner);
                     break;
                 case int n when (n >= 80 && n < 100):
-                    
                     spawner = Instantiate(crawlerSpawnPrefab, new Vector3(RightBounds, positionY),
                         Quaternion.identity);
-                    spawner.spawnerLife = enemiesToSpawn / 2;
-                    Debug.Log("Spawned: " + enemiesToSpawn + " crawling enemies");
+                    spawner.spawnerLife = enemiesPerSpawner / 2;
+                    spawner.gameObject.SetActive(false);
+                    spawner.enabled = false;
+                    _spawners.Add(spawner);
                     break;
             }
         }
@@ -114,6 +141,5 @@ public class EndlessWave : MonoBehaviour
         _gameOver = true;
         _gameOverPanel.SetActive(true);
         _textAnimator.SetBool(Over, true);
-        ;
     }
 }

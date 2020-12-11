@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -24,6 +26,7 @@ public class PlayerManager : MonoBehaviour
 
     private Mask[,] _masks = new Mask[4,PerSlot];
     private int[] _currentMask = {-1, -1, -1, -1};
+    private Dictionary<string, float> _tempBuffs = new Dictionary<string, float>();
     private Mask _equippedMask;
     private PlayerEffects _playerEffects;
     private PlayerHealth _playerHealth;
@@ -89,6 +92,15 @@ public class PlayerManager : MonoBehaviour
                 Debug.Log("Collided");
                 Pickup(other.gameObject.GetComponent<Pickup>());
                 break;
+        }
+    }
+
+    private void Update()
+    {
+        List<string> buffNames = _tempBuffs.Keys.ToList();
+        foreach (string name in buffNames)
+        {
+            _tempBuffs[name] -= Time.deltaTime;
         }
     }
 
@@ -172,7 +184,15 @@ public class PlayerManager : MonoBehaviour
         else
         {
             Buff tempBuff = Instantiate(pickup.effect);
-            StartCoroutine(TempBuff(tempBuff, pickup.duration));
+            if (_tempBuffs.ContainsKey(tempBuff.name))
+                _tempBuffs[tempBuff.name] = pickup.duration - Time.deltaTime;
+            else
+            {
+                ApplyBuff(tempBuff);
+                _tempBuffs[tempBuff.name] = pickup.duration - Time.deltaTime;
+                StartCoroutine(TempBuff(tempBuff, pickup.duration));
+            }
+
             Destroy(pickup.gameObject);
             
         }
@@ -180,10 +200,16 @@ public class PlayerManager : MonoBehaviour
 
     public IEnumerator TempBuff(Buff buff, float duration)
     {
-        ApplyBuff(buff);
         yield return new WaitForSeconds(duration);
-        ApplyDebuff(buff);
+        if (_tempBuffs[buff.name] > 0)
+            StartCoroutine(TempBuff(buff, _tempBuffs[buff.name]));
+        else
+        {
+            ApplyDebuff(buff);
+            Destroy(buff);
+        }
     }
+
 
     public void ApplyBuff(Buff buff)
     {

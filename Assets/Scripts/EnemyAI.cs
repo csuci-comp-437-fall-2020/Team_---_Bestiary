@@ -32,7 +32,11 @@ public class EnemyAI : MonoBehaviour
         rigidB = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player)
+            target = player.transform;
+        else
+            target = transform;
 
         InvokeRepeating("UpdatePath", 0f, 0.25f);
     }
@@ -69,7 +73,12 @@ public class EnemyAI : MonoBehaviour
             }
             
             attacking = true;
-            target = GameObject.FindGameObjectWithTag("Player").transform;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player)
+                target = player.transform;
+            else
+                target = transform;
+
             yield return new WaitForSecondsRealtime(10.0f);
             attacking = false;
         }

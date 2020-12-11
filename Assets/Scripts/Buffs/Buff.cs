@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Buff")]
 public class Buff : ScriptableObject
 {
+    public string name;
+    public bool stackable;
     public float damageResistance;
     public float jumpHeightMult;
     public float moveSpeedMult;

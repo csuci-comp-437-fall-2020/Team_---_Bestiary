@@ -25,7 +25,11 @@ public class runEnemyAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        destination = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player)
+            destination = player.transform;
+        else
+            destination = transform;
     }
 
     void FixedUpdate()

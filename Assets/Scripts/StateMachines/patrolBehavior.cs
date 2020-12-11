@@ -32,9 +32,13 @@ public class patrolBehavior : StateMachineBehaviour
             currentTarget = waypoints[1].transform;
         }
 
-        if (player.position.y <= animator.transform.position.y + 1.0f && player.position.y >= animator.transform.position.y - 1.0f)
+        if (player)
         {
-            animator.SetBool("isShooting", true);
+            if (player.position.y <= animator.transform.position.y + 1.0f &&
+                player.position.y >= animator.transform.position.y - 1.0f)
+            {
+                animator.SetBool("isShooting", true);
+            }
         }
     }
 

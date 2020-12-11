@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,20 +9,23 @@ public class EnemySpawner : MonoBehaviour
     public GameObject prefab;
     public bool alive;
 
-    // Start is called before the first frame update
-    void Start()
+    private int _spawnsLeft;
+
+    private void OnEnable()
     {
         alive = true;
         StartCoroutine(SpawnCreature(prefab));
+        _spawnsLeft = spawnerLife;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(spawnerLife <= 0)
+        if(_spawnsLeft <= 0)
         {
             alive = false;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            enabled = false;
         }
     }
     public IEnumerator SpawnCreature(GameObject creature)
@@ -31,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSecondsRealtime(4.0f);
             GameObject newCreature = Instantiate(creature, transform.position, Quaternion.identity);
             newCreature.name = "Creature";
-            spawnerLife--;
+            _spawnsLeft--;
         }
     }
 }

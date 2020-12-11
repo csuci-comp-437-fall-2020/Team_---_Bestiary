@@ -1503,6 +1503,21 @@ PrefabInstance:
     - target: {fileID: 4869027005245701290, guid: dd1f9d28f48c6f9409268be5840b7b87,
         type: 3}
       propertyPath: waveDuration
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869027005245701290, guid: dd1f9d28f48c6f9409268be5840b7b87,
+        type: 3}
+      propertyPath: waveShrinker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869027005245701290, guid: dd1f9d28f48c6f9409268be5840b7b87,
+        type: 3}
+      propertyPath: timer
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869027005245701290, guid: dd1f9d28f48c6f9409268be5840b7b87,
+        type: 3}
+      propertyPath: enemySpawnLimit
       value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
