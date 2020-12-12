@@ -42,7 +42,7 @@ public class runEnemyAI : MonoBehaviour
     
     void OnPatrol()
     {   
-        if (checkingWall)
+        if (checkingGround && checkingWall)
         {
             if (moveDirection > 0)
             {

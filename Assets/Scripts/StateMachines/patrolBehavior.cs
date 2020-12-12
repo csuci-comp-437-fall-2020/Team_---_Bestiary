@@ -23,22 +23,19 @@ public class patrolBehavior : StateMachineBehaviour
     {
         animator.transform.position = Vector2.MoveTowards(animator.transform.position, currentTarget.position, speed * Time.deltaTime);
 
-        if (currentTarget == waypoints[1].transform && animator.transform.position.y <= -5.0)
+        if (currentTarget == waypoints[1].transform && animator.transform.position.y < waypoints[1].transform.position.y + 0.25)
         {
             currentTarget = waypoints[0].transform;
         }
-        else if(currentTarget == waypoints[0].transform && animator.transform.position.y >= 5.0)
+        else if(currentTarget == waypoints[0].transform && animator.transform.position.y > waypoints[0].transform.position.y - 0.25)
         {
             currentTarget = waypoints[1].transform;
         }
 
-        if (player)
+
+        if (player.position.y <= animator.transform.position.y + .75f && player.position.y >= animator.transform.position.y - .75f)
         {
-            if (player.position.y <= animator.transform.position.y + 1.0f &&
-                player.position.y >= animator.transform.position.y - 1.0f)
-            {
                 animator.SetBool("isShooting", true);
-            }
         }
     }
 

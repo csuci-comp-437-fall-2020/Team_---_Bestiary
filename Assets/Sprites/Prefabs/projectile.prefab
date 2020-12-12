@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1730992903165323523}
   - component: {fileID: 9002300889455156683}
   - component: {fileID: -6862263278142982867}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,3 +134,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  damage: 5
