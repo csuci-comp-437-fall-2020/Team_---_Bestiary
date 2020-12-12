@@ -22,7 +22,8 @@ public class ZantetsuSlash : Bullet
         {
             foreach (Combat enemy in _enemies)
             {
-                enemy.TakeDamage(damage);
+                if (enemy)
+                    enemy.TakeDamage(damage);
             }
             _enemies = new HashSet<Combat>();
             _tick = TickRate;

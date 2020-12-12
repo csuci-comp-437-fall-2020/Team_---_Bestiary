@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e920f703a53a647911f65dd57343c9, type: 3}
   m_Name: Invincible
   m_EditorClassIdentifier: 
+  name: Invincible
+  stackable: 0
   damageResistance: 10000
   jumpHeightMult: 0
   moveSpeedMult: 0

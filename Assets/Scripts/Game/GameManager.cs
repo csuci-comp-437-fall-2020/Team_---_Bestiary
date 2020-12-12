@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        _currentScene = SceneManager.GetActiveScene();
         _endlessWave = GetComponent<EndlessWave>();
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerHealth = _player.GetComponent<PlayerHealth>();
@@ -35,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        _currentScene = SceneManager.GetActiveScene();
         _playerHealth = _player.GetComponent<PlayerHealth>();
     }
 
@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
             _playerHealth.isAlive = true;
-
         }
             
     }

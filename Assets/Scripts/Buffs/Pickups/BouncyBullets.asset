@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e920f703a53a647911f65dd57343c9, type: 3}
   m_Name: BouncyBullets
   m_EditorClassIdentifier: 
+  name: Bouncy Bullets
+  stackable: 0
   damageResistance: 0
   jumpHeightMult: 0
   moveSpeedMult: 0

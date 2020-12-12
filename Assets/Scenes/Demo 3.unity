@@ -232,7 +232,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4155140212848033155, guid: 15bf1a6b8ebf0f34294e2b84b967ed7c,
         type: 3}
-    - target: {fileID: 8330685247154432702, guid: b558ea774c77f9d4587813dfbed6377a,
+    - target: {fileID: 8329375445255002355, guid: b558ea774c77f9d4587813dfbed6377a,
         type: 3}
       propertyPath: displayHealthPrefab
       value: 
@@ -1503,6 +1503,21 @@ PrefabInstance:
     - target: {fileID: 4869027005245701290, guid: dd1f9d28f48c6f9409268be5840b7b87,
         type: 3}
       propertyPath: waveDuration
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869027005245701290, guid: dd1f9d28f48c6f9409268be5840b7b87,
+        type: 3}
+      propertyPath: waveShrinker
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869027005245701290, guid: dd1f9d28f48c6f9409268be5840b7b87,
+        type: 3}
+      propertyPath: timer
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869027005245701290, guid: dd1f9d28f48c6f9409268be5840b7b87,
+        type: 3}
+      propertyPath: enemySpawnLimit
       value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
